@@ -29,6 +29,6 @@ jobs:
       env:
         REPO: self
         BRANCH: gh-page
-        FOLDER: dist/web
+        FOLDER: dist
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         MESSAGE: "🚀 deploy commit {sha} "
