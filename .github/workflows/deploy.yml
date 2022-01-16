@@ -1,8 +1,9 @@
 name: Deploy
 on:
   push:
-    tags:
-      - '*'       
+    branches:
+      - main
+      
 jobs:
   deploy_web_app:
     runs-on: ubuntu-latest
