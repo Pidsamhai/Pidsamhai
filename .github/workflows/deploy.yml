@@ -21,8 +21,8 @@ jobs:
 
     - name: Build web
       run: npm run build
-      # env:
-      #   BASE_HREF: ${{ github.event.repository.name }}
+      env:
+        BASE_HREF: /${{ github.event.repository.name }}/
         
     - name: Deploy to Github page
       uses: s0/git-publish-subdir-action@develop
