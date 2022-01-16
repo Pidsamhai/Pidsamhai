@@ -3,7 +3,7 @@ on:
   push:
     tags:
       - '*'       
-
+jobs:
   deploy_web_app:
     runs-on: ubuntu-latest
     steps:
