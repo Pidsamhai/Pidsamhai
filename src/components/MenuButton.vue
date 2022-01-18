@@ -1,19 +1,19 @@
 <template>
   <router-link v-bind:to="to" custom v-slot="{ navigate, isActive }">
     <div
-      class="menu-button flex flex-col gap-1 items-center"
+      class="menu-button tw-flex tw-flex-col tw-gap-1 tw-items-center"
       :class="{ active: isActive }"
       @click="navigate"
       @keypress.enter="navigate"
       role="link"
     >
-      <p class="title">{{ title }}</p>
-      <div class="indicator h-[4px] rounded-full"></div>
+      <div class="title text-button">{{ title }}</div>
+      <div class="indicator tw-h-[4px] tw-rounded-full bg-indicator"></div>
     </div>
   </router-link>
 </template>
 <script lang="ts">
-import { Vue, Options, prop } from "vue-class-component";
+import { Vue, prop } from "vue-class-component";
 class Prop {
   public title = prop<string>({ required: true });
   public to = prop<string>({
@@ -41,7 +41,6 @@ export default class MenuButton extends Vue.with(Prop) {}
     }
     .indicator {
       width: 100%;
-      background-color: black;
     }
   }
   .indicator {

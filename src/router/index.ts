@@ -17,9 +17,14 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
+    path: "/project",
+    name: "project",
+    component: () => import("@/views/ProjectView.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
-    redirect: (to) => "/",
+    redirect: "/",
   },
 ];
 
