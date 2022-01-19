@@ -1,43 +1,40 @@
 <template>
-  <v-app :theme="theme">
-    <v-app-bar elevation="4" color="primary lighten-3">
-      <v-app-bar-title>Pidsamhai</v-app-bar-title>
-      <v-spacer></v-spacer>
-      <div
-        class="tw-mr-2 tw-flex tw-flex-row tw-gap-2 tw-h-full tw-items-center"
-      >
-        <MenuButton title="Home" to="/" />
-        <MenuButton title="About" to="/about" />
-        <MenuButton title="Project" to="/project" />
-        <v-btn @click="toggleTheme()" icon color="transparent">
-          <v-icon size="36">mdi-brightness-6</v-icon>
-        </v-btn>
-        <GithubRepo />
-      </div>
-    </v-app-bar>
+  <v-app :theme="store.state.themeMode">
+    <AppBar />
     <v-main>
-      <keep-alive>
-        <router-view :key="$route.fullPath" />
-      </keep-alive>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </transition>
+      </router-view>
     </v-main>
   </v-app>
 </template>
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MenuButton from "@/components/MenuButton.vue";
-import GithubRepo from "@/components/GithubRepo.vue";
+import AppBar from "./components/AppBar.vue";
+import ProjectView from "@/views/ProjectView.vue";
+import { useStore } from "@/store";
 @Options({
-  components: { MenuButton, GithubRepo },
+  components: { AppBar, ProjectView },
 })
 export default class App extends Vue {
-  theme = localStorage.getItem("theme");
+  store = useStore();
   items = [
     { title: "Home", icon: "mdi-view-dashboard" },
     { title: "About", icon: "mdi-forum" },
   ];
-  toggleTheme() {
-    this.theme = this.theme === "light" ? "dark" : "light";
-    localStorage.setItem("theme", this.theme);
-  }
 }
 </script>
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

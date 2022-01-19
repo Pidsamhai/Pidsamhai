@@ -7,6 +7,7 @@ import { Repository } from "./types/Repository";
 export interface State {
   count: number;
   repositories: Array<Repository>;
+  themeMode: ThemeMode;
 }
 
 // define injection key
@@ -16,6 +17,14 @@ export const store = createStore<State>({
   state: {
     count: 0,
     repositories: [],
+    themeMode: (localStorage.getItem("theme") || "light") as ThemeMode,
+  },
+  mutations: {
+    toggleTheme(state) {
+      const theme = state.themeMode === "light" ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+      state.themeMode = theme;
+    },
   },
 });
 
