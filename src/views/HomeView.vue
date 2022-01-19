@@ -4,7 +4,7 @@
   >
     <p class="tw-text-3xl md:tw-text-5xl font-weight-bold">Pidsamhai</p>
     <p class="text-body tw-font-mono tw-p-4 tw-text-center">
-      Pidsamhai (pid-sam-mhai) is the Thai world meanig, passionate something
+      Pidsamhai (pid-sa-mhai) is the Thai word meaning, passionate something
     </p>
     <div class="tw-flex tw-flex-row tw-gap-2 tw-items-center">
       <a href="https://github.com/Pidsamhai" target="_blank"
