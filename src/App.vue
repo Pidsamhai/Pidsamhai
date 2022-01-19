@@ -2,13 +2,17 @@
   <v-app :theme="store.state.themeMode">
     <AppBar />
     <v-main>
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <keep-alive>
-            <component :is="Component" />
-          </keep-alive>
-        </transition>
-      </router-view>
+      <div class="tw-w-full tw-justify-center tw-flex tw-h-full">
+        <div class="tw-max-w-3xl">
+          <router-view v-slot="{ Component }">
+            <transition name="fade" mode="out-in">
+              <keep-alive>
+                <component :is="Component" />
+              </keep-alive>
+            </transition>
+          </router-view>
+        </div>
+      </div>
     </v-main>
   </v-app>
 </template>

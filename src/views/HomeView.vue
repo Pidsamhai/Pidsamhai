@@ -1,9 +1,9 @@
 <template>
   <div
-    class="tw-h-full tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mx-auto"
+    class="tw-h-full tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center"
   >
-    <p class="text-h2 font-weight-bold">Pidsamhai</p>
-    <p class="text-body tw-font-mono tw-p-4">
+    <p class="tw-text-3xl md:tw-text-5xl font-weight-bold">Pidsamhai</p>
+    <p class="text-body tw-font-mono tw-p-4 tw-text-center">
       Pidsamhai (pid-sam-mhai) is the Thai world meanig, passionate something
     </p>
     <div class="tw-flex tw-flex-row tw-gap-2 tw-items-center">

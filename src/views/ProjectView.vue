@@ -12,7 +12,7 @@
   </div>
   <div
     v-else
-    class="tw-flex tw-items-center tw-justify-center tw-m-4 tw-w-full"
+    class="tw-flex tw-items-center tw-justify-center tw-m-4 tw-max-w-3xl"
   >
     <div class="tw-grid tw-grid-cols-1 tw-gap-4 tw-max-w-3xl">
       <template v-for="(item, index) in store.state.repositories" :key="index">
