@@ -14,6 +14,16 @@
         </div>
       </div>
     </v-main>
+    <v-footer
+      max-height="100"
+      height="100"
+      min-height="100"
+      class="bg-background"
+    >
+      <div class="text-center tw-w-full">
+        <p class="copy-right">Ⓒ Pidsamhai {{ new Date().getFullYear() }}</p>
+      </div>
+    </v-footer>
   </v-app>
 </template>
 <script lang="ts">
@@ -32,7 +42,7 @@ export default class App extends Vue {
   ];
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
