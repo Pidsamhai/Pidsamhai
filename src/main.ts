@@ -7,7 +7,8 @@ import "./index.scss";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { key, store } from "./store";
-import ApiServices from "./services/github-api.plugin";
+import ApiServices from "@/plugins/github-api";
+import LanguageColor from "@/plugins/language-color";
 
 loadFonts();
 
@@ -17,4 +18,5 @@ createApp(App)
   .use(VueAxios, axios)
   .use(store, key)
   .use(ApiServices)
+  .use(LanguageColor)
   .mount("#app");

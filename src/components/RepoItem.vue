@@ -1,10 +1,10 @@
 <template>
   <v-card
-    class="mx-auto tw-w-full tw-break-words hover:!tw-shadow-xl"
-    :color="$vuetify.theme.current == `light` ? `#FFCBCB` : null"
+    class="mx-auto tw-w-full tw-break-words"
+    color="transparent"
     dark
     elevation="0"
-    rounded="xl"
+    rounded="0"
   >
     <v-list-item three-line>
       <v-list-item-content>
@@ -27,8 +27,8 @@
 
     <v-card-actions v-if="langs.length != 0">
       <div class="tw-flex tw-row tw-gap-2 tw-flex-wrap">
-        <template v-for="(num, lang) in langs" :key="num">
-          <v-chip color="#F6F6F6">
+        <template v-for="lang in langs" :key="lang">
+          <v-chip :color="getLangColor(lang)" text-color="#000000">
             {{ lang }}
           </v-chip>
         </template>
@@ -47,10 +47,21 @@ class Prop {
 export default class RepoItem extends Vue.with(Prop) {
   langs: Array<string> = [];
   async fetchLang() {
-    const result = await this.axios.get<Array<string>>(this.item.languages_url);
-    this.langs = result.data;
+    const result = await this.axios.get<Record<string, number>>(
+      this.item.languages_url
+    );
+    this.langs = Object.keys(result.data);
+  }
+  getLangColor(lang: string): string | null {
+    console.log(lang);
+    try {
+      return this.$languageColor[lang].color;
+    } catch (error) {
+      return null;
+    }
   }
   created() {
+    this.$languageColor;
     this.fetchLang();
   }
 }

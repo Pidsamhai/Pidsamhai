@@ -3,7 +3,7 @@ import axios from "axios";
 
 export interface IGithubApiServices {
   gerRepository(
-    sortBy: "pushed" | "created",
+    sortBy: "created" | "updated" | "pushed" | "full_name",
     sortDirection: "asc" | "desc"
   ): Promise<Array<Repository>>;
 }

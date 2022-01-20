@@ -3,7 +3,7 @@
     <AppBar />
     <v-main>
       <div class="tw-w-full tw-justify-center tw-flex tw-h-full">
-        <div class="tw-max-w-3xl">
+        <div class="tw-max-w-3xl tw-w-full">
           <router-view v-slot="{ Component }">
             <transition name="fade" mode="out-in">
               <keep-alive>

@@ -1,5 +1,8 @@
 import { App } from "vue";
-import { GithubApiServices, IGithubApiServices } from "./github-api.services";
+import {
+  GithubApiServices,
+  IGithubApiServices,
+} from "../services/github-api.services";
 
 export default {
   install: (app: App) => {
