@@ -1,6 +1,6 @@
 <template>
-  <div class="!tw-w-full tw-h-full tw-flex tw-flex-col">
-    <div class="tw-w-full tw-flex tw-flex-row tw-gap-2 tw-mt-4">
+  <div class="!tw-w-full tw-h-full tw-flex tw-flex-col tw-p-4">
+    <div class="tw-w-full tw-flex tw-flex-row tw-gap-2 tw-pb-4">
       <v-spacer></v-spacer>
       <v-menu offset-y>
         <template v-slot:activator="{ props }">
@@ -48,16 +48,13 @@
         indeterminate
       ></v-progress-circular>
     </div>
-    <div v-else class="tw-flex tw-items-center tw-justify-center tw-m-4">
-      <div class="tw-grid tw-grid-cols-1 tw-gap-4">
-        <template
-          v-for="(item, index) in store.state.repositories"
-          :key="index"
-        >
+    <div v-else class="tw-flex tw-flex-col tw-grow tw-h-0 tw-overflow-auto">
+      <template v-for="(item, index) in store.state.repositories" :key="index">
+        <div>
           <RepoItem :item="item" />
           <v-divider class="tw-bg-black"></v-divider>
-        </template>
-      </div>
+        </div>
+      </template>
     </div>
   </div>
 </template>

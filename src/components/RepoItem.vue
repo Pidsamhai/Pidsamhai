@@ -47,10 +47,8 @@ class Prop {
 export default class RepoItem extends Vue.with(Prop) {
   langs: Array<string> = [];
   async fetchLang() {
-    const result = await this.axios.get<Record<string, number>>(
-      this.item.languages_url
-    );
-    this.langs = Object.keys(result.data);
+    const result = await this.$apiServices.getLanguage(this.item.languages_url);
+    this.langs = Object.keys(result);
   }
   getLangColor(lang: string): string | null {
     console.log(lang);
