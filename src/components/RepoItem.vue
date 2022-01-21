@@ -37,7 +37,7 @@
   </v-card>
 </template>
 <script lang="ts">
-import { Repository } from "@/types/Repository";
+import { Repository } from "@/types/repository";
 import { Vue, prop } from "vue-class-component";
 
 class Prop {

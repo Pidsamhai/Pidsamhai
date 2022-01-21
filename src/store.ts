@@ -1,7 +1,7 @@
 // store.ts
 import { InjectionKey } from "vue";
 import { createStore, useStore as baseUseStore, Store } from "vuex";
-import { Repository } from "./types/Repository";
+import { Repository } from "@/types/repository";
 
 // define your typings for the store state
 export interface State {

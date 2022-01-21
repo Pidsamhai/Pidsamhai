@@ -1,4 +1,4 @@
-import { Repository } from "@/types/Repository";
+import { Repository } from "@/types/repository";
 import axios from "axios";
 
 export interface IGithubApiServices {
