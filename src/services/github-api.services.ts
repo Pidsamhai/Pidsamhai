@@ -50,7 +50,10 @@ export class GithubApiServices implements IGithubApiServices {
         })
       );
       const result = await axios.all(promises);
-      return result.map((e) => e.data).flat();
+      return result
+        .map((e) => e.data)
+        .flat()
+        .sort((a, b) => (a.published_at < b.published_at ? 1 : -1));
     } catch (error) {
       return [];
     }
