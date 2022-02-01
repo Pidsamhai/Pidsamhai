@@ -44,7 +44,7 @@
       <Loading />
     </div>
     <div v-else class="tw-flex tw-flex-col tw-grow tw-h-0 tw-overflow-auto">
-      <template v-for="(item, index) in store.state.repositories" :key="index">
+      <template v-for="(item, index) in repositories" :key="index">
         <div>
           <RepoItem :item="item" />
           <v-divider class="tw-bg-black"></v-divider>
@@ -56,14 +56,15 @@
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
 import RepoItem from "@/components/RepoItem.vue";
-import { useStore } from "@/store";
 import Loading from "@/components/Loading.vue";
+import { Repository } from "@/types/repository";
 
 @Options({
   components: { RepoItem, Loading },
 })
 export default class ProjectView extends Vue {
   menu = false;
+  repositories: Array<Repository> = [];
   sort = "updated";
   direction = "desc";
   sortFilter = [
@@ -72,7 +73,6 @@ export default class ProjectView extends Vue {
     { title: "Push", value: "pushed" },
     { title: "Full Name", value: "full_name" },
   ];
-  store = useStore();
   attrs = {
     class: "mb-6",
     boilerplate: true,
@@ -81,7 +81,7 @@ export default class ProjectView extends Vue {
   isLoading = false;
   async fetch() {
     this.isLoading = true;
-    this.store.state.repositories = await this.$apiServices.gerRepository(
+    this.repositories = await this.$apiServices.gerRepository(
       this.sort,
       this.direction
     );
@@ -100,8 +100,7 @@ export default class ProjectView extends Vue {
     });
   }
   mounted() {
-    console.log("Mounted");
-    if (this.store.state.repositories.length == 0) {
+    if (this.repositories.length == 0) {
       this.fetch();
     }
   }

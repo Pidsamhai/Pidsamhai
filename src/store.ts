@@ -1,12 +1,9 @@
 // store.ts
 import { InjectionKey } from "vue";
 import { createStore, useStore as baseUseStore, Store } from "vuex";
-import { Repository } from "@/types/repository";
 
 // define your typings for the store state
 export interface State {
-  count: number;
-  repositories: Array<Repository>;
   themeMode: ThemeMode;
 }
 
@@ -15,8 +12,6 @@ export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
   state: {
-    count: 0,
-    repositories: [],
     themeMode: (localStorage.getItem("theme") || "light") as ThemeMode,
   },
   mutations: {
