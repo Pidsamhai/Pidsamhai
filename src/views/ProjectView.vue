@@ -41,12 +41,7 @@
       v-if="isLoading"
       class="tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center"
     >
-      <v-progress-circular
-        :size="42"
-        :width="5"
-        color="secondary"
-        indeterminate
-      ></v-progress-circular>
+      <Loading />
     </div>
     <div v-else class="tw-flex tw-flex-col tw-grow tw-h-0 tw-overflow-auto">
       <template v-for="(item, index) in store.state.repositories" :key="index">
@@ -62,8 +57,9 @@
 import { Vue, Options } from "vue-class-component";
 import RepoItem from "@/components/RepoItem.vue";
 import { useStore } from "@/store";
+import Loading from "@/components/Loading.vue";
 @Options({
-  components: { RepoItem },
+  components: { RepoItem, Loading },
 })
 export default class ProjectView extends Vue {
   sort = "updated";
