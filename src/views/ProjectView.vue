@@ -2,7 +2,7 @@
   <div class="!tw-w-full tw-h-full tw-flex tw-flex-col tw-p-4">
     <div class="tw-w-full tw-flex tw-flex-row tw-gap-2 tw-pb-4">
       <v-spacer></v-spacer>
-      <v-menu offset-y>
+      <v-menu offset-y v-model="menu">
         <template v-slot:activator="{ props }">
           <v-btn
             :disabled="isLoading"
@@ -58,10 +58,12 @@ import { Vue, Options } from "vue-class-component";
 import RepoItem from "@/components/RepoItem.vue";
 import { useStore } from "@/store";
 import Loading from "@/components/Loading.vue";
+
 @Options({
   components: { RepoItem, Loading },
 })
 export default class ProjectView extends Vue {
+  menu = false;
   sort = "updated";
   direction = "desc";
   sortFilter = [
@@ -90,6 +92,7 @@ export default class ProjectView extends Vue {
   }
   created() {
     this.$watch("sort", () => {
+      this.menu = false;
       this.fetch();
     });
     this.$watch("direction", () => {
