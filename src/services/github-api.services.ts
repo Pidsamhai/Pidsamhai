@@ -14,7 +14,7 @@ export interface IGithubApiServices {
 export class GithubApiServices implements IGithubApiServices {
   private nativeApiUrl = "https://api.github.com";
   private proxyApiUrl =
-    "https://asia-southeast1-proxy-api-dbf94.cloudfunctions.net/api/6fa15b05-08cc-4f45-8752-bfac42806ba5";
+    "https://supabase-proxy-api.vercel.app/api/v1/template/3a5d1d95-2ade-4cbd-9f82-7dbb7322a523";
 
   private api = axios.create({
     baseURL: this.proxyApiUrl,
