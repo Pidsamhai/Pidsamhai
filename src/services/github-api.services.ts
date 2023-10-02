@@ -2,13 +2,22 @@ import { Release } from "@/types/release";
 import { Repository } from "@/types/repository";
 import axios from "axios";
 
+export type Sort = "created" | "updated" | "pushed" | "full_name";
+export type SortDirection = "asc" | "desc";
+export type SortFilter = {
+  title: string;
+  value: Sort;
+};
+
 export interface IGithubApiServices {
   gerRepository(
-    sortBy: "created" | "updated" | "pushed" | "full_name",
-    sortDirection: "asc" | "desc"
+    sortBy: Sort,
+    sortDirection: SortDirection
   ): Promise<Array<Repository>>;
 
   getRelease(): Promise<Array<Release>>;
+
+  getLanguage(url: string): Promise<Record<string, number>>;
 }
 
 export class GithubApiServices implements IGithubApiServices {

@@ -25,15 +25,23 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
   },
   {
+    path: "/privacypolicy",
+    name: "privacypolicy",
+    component: () => import("@/views/PrivacyPolicyView.vue"),
+    props: true,
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
     redirect: "/",
     props: true,
+    children: [],
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 });
 

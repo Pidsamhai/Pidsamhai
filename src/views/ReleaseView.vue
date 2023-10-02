@@ -23,6 +23,8 @@ import { Release } from "@/types/release";
 import { Vue, Options } from "vue-class-component";
 import ReleaseItem from "@/components/ReleaseItem.vue";
 import Loading from "@/components/Loading.vue";
+import { inject } from "vue";
+import { IGithubApiServices } from "@/services/github-api.services";
 
 @Options({
   components: { ReleaseItem, Loading },
@@ -30,9 +32,10 @@ import Loading from "@/components/Loading.vue";
 export default class ReleaseView extends Vue {
   release: Array<Release> = [];
   isLoading = false;
+  apiServices = inject<IGithubApiServices>("apiServices");
   async fetch() {
     this.isLoading = true;
-    this.release = await this.$apiServices.getRelease();
+    this.release = await this.apiServices!.getRelease();
     this.isLoading = false;
   }
   mounted() {

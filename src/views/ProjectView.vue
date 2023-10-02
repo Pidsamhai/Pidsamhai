@@ -58,6 +58,13 @@ import { Vue, Options } from "vue-class-component";
 import RepoItem from "@/components/RepoItem.vue";
 import Loading from "@/components/Loading.vue";
 import { Repository } from "@/types/repository";
+import {
+  IGithubApiServices,
+  Sort,
+  SortDirection,
+  SortFilter,
+} from "@/services/github-api.services";
+import { inject } from "vue";
 
 @Options({
   components: { RepoItem, Loading },
@@ -65,9 +72,10 @@ import { Repository } from "@/types/repository";
 export default class ProjectView extends Vue {
   menu = false;
   repositories: Array<Repository> = [];
-  sort = "updated";
-  direction = "desc";
-  sortFilter = [
+  sort: Sort = "updated";
+  apiServices = inject<IGithubApiServices>("apiServices");
+  direction: SortDirection = "desc";
+  sortFilter: SortFilter[] = [
     { title: "Create", value: "created" },
     { title: "Update", value: "updated" },
     { title: "Push", value: "pushed" },
@@ -81,7 +89,7 @@ export default class ProjectView extends Vue {
   isLoading = false;
   async fetch() {
     this.isLoading = true;
-    this.repositories = await this.$apiServices.gerRepository(
+    this.repositories = await this.apiServices!.gerRepository(
       this.sort,
       this.direction
     );

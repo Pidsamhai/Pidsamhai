@@ -32,7 +32,7 @@
         <v-list class="tw-p-4">
           <template v-for="(item, index) in menuItem" :key="index">
             <router-link v-bind:to="item.path" custom v-slot="{ navigate }">
-              <v-list-item @click="navigate">
+              <v-list-item @click="() => navigate()">
                 <v-list-item-title> {{ item.name }} </v-list-item-title>
               </v-list-item>
             </router-link>
@@ -61,6 +61,7 @@ export default class AppBar extends Vue {
   menuItem = [
     { name: "Project", path: "/project" },
     { name: "Release", path: "/release" },
+    { name: "Privacy Policy", path: "/privacypolicy" },
     { name: "About", path: "/about" },
   ];
   closeOnContentClick = true;

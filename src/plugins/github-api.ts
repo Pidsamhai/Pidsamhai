@@ -7,13 +7,14 @@ import {
 export default {
   install: (app: App) => {
     const apiServiceModules: IGithubApiServices = new GithubApiServices();
+    app.provide("apiServices", apiServiceModules);
     app.config.globalProperties.$apiServices = apiServiceModules;
   },
 };
 
-declare module "@vue/runtime-core" {
+declare module "vue" {
   //Bind to `this` keyword
   interface ComponentCustomProperties {
-    $apiServices: GithubApiServices;
+    $apiServices: IGithubApiServices;
   }
 }

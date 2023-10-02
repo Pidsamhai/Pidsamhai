@@ -37,7 +37,10 @@
   </v-card>
 </template>
 <script lang="ts">
+import { IGithubApiServices } from "@/services/github-api.services";
+import { ColorKey, Color } from "@/plugins/language-color";
 import { Repository } from "@/types/repository";
+import { inject } from "vue";
 import { Vue, prop } from "vue-class-component";
 
 class Prop {
@@ -45,21 +48,22 @@ class Prop {
 }
 
 export default class RepoItem extends Vue.with(Prop) {
-  langs: Array<string> = [];
+  langs: Array<ColorKey> = [];
+  apiServices = inject<IGithubApiServices>("apiServices");
+  languageColor = inject<Color>("languageColor");
   async fetchLang() {
-    const result = await this.$apiServices.getLanguage(this.item.languages_url);
-    this.langs = Object.keys(result);
+    const result = await this.apiServices!.getLanguage(this.item.languages_url);
+    this.langs = Object.keys(result) as ColorKey[];
   }
-  getLangColor(lang: string): string | null {
+  getLangColor(lang: ColorKey): string | undefined {
     console.log(lang);
     try {
-      return this.$languageColor[lang].color;
+      return this.languageColor![lang].color ?? undefined;
     } catch (error) {
-      return null;
+      return undefined;
     }
   }
   created() {
-    this.$languageColor;
     this.fetchLang();
   }
 }

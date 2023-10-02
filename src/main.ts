@@ -15,9 +15,9 @@ loadFonts();
 
 createApp({
   created() {
-    if (process.env.NODE_ENV == "development") {
-      devtools.connect("http://localhost", 8098);
-    }
+    // if (process.env.NODE_ENV == "development") {
+    //   devtools.connect("http://localhost", 8098);
+    // }
   },
   render: () => h(App),
 })
