@@ -54,7 +54,6 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Options } from "vue-class-component";
 import RepoItem from "@/components/RepoItem.vue";
 import Loading from "@/components/Loading.vue";
 import { Repository } from "@/types/repository";
@@ -65,8 +64,9 @@ import {
   SortFilter,
 } from "@/services/github-api.services";
 import { inject } from "vue";
+import { Component, Vue } from 'vue-facing-decorator'
 
-@Options({
+@Component({
   components: { RepoItem, Loading },
 })
 export default class ProjectView extends Vue {

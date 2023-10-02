@@ -41,18 +41,19 @@ import { IGithubApiServices } from "@/services/github-api.services";
 import { ColorKey, Color } from "@/plugins/language-color";
 import { Repository } from "@/types/repository";
 import { inject } from "vue";
-import { Vue, prop } from "vue-class-component";
+import { Component, Vue, Prop } from "vue-facing-decorator";
 
-class Prop {
-  item = prop<Repository>({ required: true });
-}
-
-export default class RepoItem extends Vue.with(Prop) {
+@Component
+export default class RepoItem extends Vue {
+  @Prop({ required: true })
+  item!: Repository;
   langs: Array<ColorKey> = [];
   apiServices = inject<IGithubApiServices>("apiServices");
   languageColor = inject<Color>("languageColor");
   async fetchLang() {
-    const result = await this.apiServices!.getLanguage(this.item.languages_url);
+    const result = await this.apiServices!.getLanguage(
+      this.item.languages_url
+    );
     this.langs = Object.keys(result) as ColorKey[];
   }
   getLangColor(lang: ColorKey): string | undefined {

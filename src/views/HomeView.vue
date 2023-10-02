@@ -18,11 +18,13 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
 import MenuButton from "@/components/MenuButton.vue"; // @ is an alias to /src
+import { Component, Vue } from 'vue-facing-decorator'
 
-@Options({
-  components: { MenuButton },
+@Component({
+  components: {
+    MenuButton
+  }
 })
 export default class HomeView extends Vue {
   hireMe() {

@@ -4,7 +4,7 @@
       class="menu-button tw-flex tw-flex-col tw-gap-1 tw-items-center"
       :class="{ active: isActive }"
       @click="navigate"
-      @keypress.enter="navigate"
+      @keypress.enter="() => navigate()"
       role="link"
     >
       <div class="title text-button">{{ title }}</div>
@@ -13,16 +13,15 @@
   </router-link>
 </template>
 <script lang="ts">
-import { Vue, prop } from "vue-class-component";
-class Prop {
-  public title = prop<string>({ required: true });
-  public to = prop<string>({
-    default: "#",
-    required: false,
-  });
-}
+import { Component, Vue, Prop } from "vue-facing-decorator";
 
-export default class MenuButton extends Vue.with(Prop) {}
+@Component
+export default class MenuButton extends Vue {
+  @Prop({ required: true })
+  title!: string;
+  @Prop({ default: "#" })
+  to!: string;
+}
 </script>
 
 <style scoped lang="scss">

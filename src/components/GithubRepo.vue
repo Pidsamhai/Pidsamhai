@@ -4,6 +4,6 @@
   </a>
 </template>
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Vue } from 'vue-facing-decorator'
 export default class GithubRepo extends Vue {}
 </script>

@@ -20,14 +20,14 @@
 </template>
 <script lang="ts">
 import { Release } from "@/types/release";
-import { Vue, Options } from "vue-class-component";
 import ReleaseItem from "@/components/ReleaseItem.vue";
 import Loading from "@/components/Loading.vue";
 import { inject } from "vue";
 import { IGithubApiServices } from "@/services/github-api.services";
+import { Component, Vue } from 'vue-facing-decorator'
 
-@Options({
-  components: { ReleaseItem, Loading },
+@Component({
+  components: { ReleaseItem, Loading }
 })
 export default class ReleaseView extends Vue {
   release: Array<Release> = [];

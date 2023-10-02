@@ -3,13 +3,13 @@
     :class="{ dark: store.state.themeMode == `dark` }"
     class="release-item tw-flex-row tw-flex tw-text-base md:tw-text-lg tw-justify-between tw-p-4"
   >
-    <a :href="item.html_url" target="_blank">
-      {{ item.url.split("/").reverse()[2] }} :
-      {{ item.tag_name }}
+    <a :href="item!.html_url" target="_blank">
+      {{ item!.url.split("/").reverse()[2] }} :
+      {{ item!.tag_name }}
     </a>
     <p>
       {{
-        new Date(Date.parse(item.published_at)).toLocaleString("default", {
+        new Date(Date.parse(item!.published_at)).toLocaleString("default", {
           month: "short",
           day: "2-digit",
           year: "numeric",
@@ -21,13 +21,12 @@
 <script lang="ts">
 import { useStore } from "@/store";
 import { Release } from "@/types/release";
-import { Vue, prop } from "vue-class-component";
+import { Component, Vue, Prop } from "vue-facing-decorator";
 
-class Prop {
-  item = prop<Release>({ required: true });
-}
-
-export default class ReleaseItem extends Vue.with(Prop) {
+@Component
+export default class ReleaseItem extends Vue {
+  @Prop({required: true})
+  item!: Release;
   store = useStore();
   showChangelog = false;
 }

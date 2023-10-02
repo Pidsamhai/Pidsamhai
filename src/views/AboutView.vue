@@ -4,8 +4,9 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Component, Vue } from 'vue-facing-decorator'
 
+@Component
 export default class AboutView extends Vue {}
 </script>
 <style lang="scss"></style>

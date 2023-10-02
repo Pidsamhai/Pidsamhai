@@ -50,11 +50,13 @@
 </template>
 <script lang="ts">
 import { useStore } from "@/store";
-import { Vue, Options } from "vue-class-component";
 import MenuButton from "@/components/MenuButton.vue";
+import { Component, Vue } from 'vue-facing-decorator'
 
-@Options({
-  components: { MenuButton },
+@Component({
+  components: {
+    MenuButton
+  }
 })
 export default class AppBar extends Vue {
   closeMenu = false;
