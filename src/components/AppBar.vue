@@ -63,7 +63,7 @@ export default class AppBar extends Vue {
   menuItem = [
     { name: "Project", path: "/project" },
     { name: "Release", path: "/release" },
-    { name: "Privacy Policy", path: "/privacypolicy" },
+    // { name: "Privacy Policy", path: "/privacypolicy" },
     { name: "About", path: "/about" },
   ];
   closeOnContentClick = true;

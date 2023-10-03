@@ -25,10 +25,24 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
   },
   {
-    path: "/privacypolicy",
-    name: "privacypolicy",
-    component: () => import("@/views/PrivacyPolicyView.vue"),
+    path: "/app",
+    name: "app",
     props: true,
+    children: [
+      {
+        path: "moviedb",
+        name: "app-moviedb",
+        props: true,
+        children: [
+          {
+            path: "privacypolicy",
+            name: "privacypolicy",
+            component: () => import("@/views/PrivacyPolicyView.vue"),
+            props: true,
+          },
+        ],
+      },
+    ],
   },
   {
     path: "/:pathMatch(.*)*",
