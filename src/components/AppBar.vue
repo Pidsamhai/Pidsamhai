@@ -11,8 +11,8 @@
         <MenuButton :title="item.name" :to="item.path" />
       </template>
 
-      <v-btn @click="toggleTheme()" icon color="transparent">
-        <v-icon size="36">mdi-brightness-6</v-icon>
+      <v-btn @click="toggleTheme()" icon>
+        <v-icon size="32" icon="mdi-brightness-6"></v-icon>
       </v-btn>
       <GithubRepo />
     </div>
@@ -21,14 +21,13 @@
         <v-btn
           v-bind="props"
           icon
-          color="transparent"
           class="tw-block md:tw-hidden"
         >
-          <v-icon size="32">mdi-menu</v-icon>
+          <v-icon size="32" icon="mdi-menu"></v-icon>
         </v-btn>
       </template>
 
-      <v-card class="tw-mt-3 tw-left-[-70%]" elevation="8" rounded="xl">
+      <v-card class="tw-mt-3 tw-left-[-10%]" elevation="8" rounded="xl">
         <v-list class="tw-p-4">
           <template v-for="(item, index) in menuItem" :key="index">
             <router-link v-bind:to="item.path" custom v-slot="{ navigate }">
@@ -39,7 +38,7 @@
           </template>
           <v-list-item @click="toggleTheme()">
             <v-list-item-title class="tw-capitalize">
-              <v-icon>mdi-brightness-6</v-icon>
+              <v-icon icon="mdi-brightness-6"></v-icon>
               {{ store.state.themeMode }}</v-list-item-title
             >
           </v-list-item>
@@ -51,12 +50,12 @@
 <script lang="ts">
 import { useStore } from "@/store";
 import MenuButton from "@/components/MenuButton.vue";
-import { Component, Vue } from 'vue-facing-decorator'
+import { Component, Vue } from "vue-facing-decorator";
 
 @Component({
   components: {
-    MenuButton
-  }
+    MenuButton,
+  },
 })
 export default class AppBar extends Vue {
   closeMenu = false;

@@ -8,10 +8,10 @@
     </p>
     <div class="tw-flex tw-flex-row tw-gap-2 tw-items-center">
       <a href="https://github.com/Pidsamhai" target="_blank"
-        ><v-icon size="32">mdi-github</v-icon></a
+        ><v-icon size="32" icon="mdi-github"></v-icon></a
       >
-      <v-icon size="32" @click="hireMe()" class="tw-cursor-pointer"
-        >mdi-email</v-icon
+      <v-icon size="32" @click="hireMe()" icon="mdi-email" class="tw-cursor-pointer"
+        ></v-icon
       >
     </div>
   </div>
